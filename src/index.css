@@ -1,0 +1,14 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+*{
+    font-family: "Poppins";
+}
+
+a.active {
+
+    border-bottom: 2px solid rgb(206, 190, 190);
+    
+}
