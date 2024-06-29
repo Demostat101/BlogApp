@@ -1,6 +1,10 @@
+import { Props } from "../App";
 
+interface Propss {
+  posts: Props[]
+}
 
-const Home = ({posts}) => {
+const Home = ({posts}:Propss) => {
 
     const month = ["January","February","March","April","May","June","July","August","September","October","November","December"];
     const day = [1,2,3,4,5,6,7]

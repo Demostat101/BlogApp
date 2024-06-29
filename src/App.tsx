@@ -12,13 +12,19 @@ import Error404 from './component/Error404'
 import { useState } from 'react'
 import { postData } from './dbComponent/db'
 
+export  interface Props {
+  id:number,
+  title:string,
+  body:string
+}
+
 
 
 
 function App() {
 
   const [search, setSearch] = useState("");
-  const [posts, setPost] = useState(postData)
+  const [posts, setPost] = useState<Props[]>(postData)
 
   
   
