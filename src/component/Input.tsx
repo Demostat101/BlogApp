@@ -1,9 +1,12 @@
-interface Props {
-    search:string,
-    setSearch:React.Dispatch<React.SetStateAction<string>>
-}
+import { blogContextProvider } from "../contextComponent/Context"
 
-const Input = ({search, setSearch}:Props) => {
+// interface Props {
+//     search:string,
+//     setSearch:React.Dispatch<React.SetStateAction<string>>
+// }
+
+const Input = () => {
+  const {search, setSearch} = blogContextProvider()
   return (
     <form onSubmit={(e)=> e.preventDefault()} className="w-1/2 ">
 

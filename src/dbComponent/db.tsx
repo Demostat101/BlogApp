@@ -25,5 +25,10 @@ export const postData = [
         id:5,
         title:"My fifth assessment",
         body:"Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores numquam recusandae animi nam vero distinctio dignissimos itaque commodi quibusdam. Voluptates."
+    },
+    {
+        id:6,
+        title:"My sixth assessment",
+        body:"Lorem ipsum dolor sit "
     }
 ]

@@ -12,3 +12,7 @@ a.active {
     border-bottom: 2px solid rgb(206, 190, 190);
     
 }
+
+.post.active{
+    border-bottom: none;
+}
