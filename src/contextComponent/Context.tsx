@@ -1,6 +1,7 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { postData } from '../dbComponent/db';
 import { useNavigate } from 'react-router-dom'
+import { createContext, useContext } from "react";
 
 
 export  interface Props {
@@ -15,7 +16,6 @@ export  interface Props {
 
 
 
-import { createContext, useContext } from "react";
 
  const blogContext = createContext<null | any>({})
 
@@ -35,6 +35,13 @@ import { createContext, useContext } from "react";
 
    const searchPost = posts.filter((post)=> post.title.toLowerCase().indexOf(search.toLowerCase()) !== -1).reverse()
 
+   useEffect (()=>{
+        searchPost
+   },[posts,search])
+  
+
+   
+
     const handleDelete = (id:number) => {
         let poster = posts.filter((post) => post.id !== id );
         setPost(poster)
@@ -47,13 +54,35 @@ import { createContext, useContext } from "react";
       
       };
       const closePost = () => {
-     
         setOpen(false);
        
       };
 
+      const submitBlog = () => {
+        
+        const add = {
+          id:posts.length + 1,
+          title:addTitle,
+          body:addPost
+        }
+
+        if (addTitle==="" || addPost==="") {
+          return;
+        } else {
+          return setPost((prev) => {
+            setAddTitle("")
+            setAddPost("")
+            setOpen(false)
+            return [...prev, add]
+          })
+        }
+
+        
+      }
+
+
    return (
-     <blogContext.Provider value={{search,setSearch,posts,setPost,addTitle,setAddTitle,addPost, setAddPost,open,setOpen,searchPost, handleDelete, openPost,closePost}}>
+     <blogContext.Provider value={{search,setSearch,posts,setPost,addTitle,setAddTitle,addPost, setAddPost,open,setOpen,searchPost, handleDelete, openPost,closePost, submitBlog}}>
         {children}
      </blogContext.Provider>
    )

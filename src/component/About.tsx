@@ -2,7 +2,7 @@
 
 const About = () => {
   return (
-    <div>
+    <div className="xl:max-w-[1000px]">
       ABOUT
     </div>
   )

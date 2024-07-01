@@ -2,7 +2,7 @@
 
 const Error404 = () => {
   return (
-    <div>
+    <div className="xl:max-w-[1000px]">
         ERROR 404
     </div>
   )
