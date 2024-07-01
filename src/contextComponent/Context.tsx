@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react'
-import { postData } from '../dbComponent/db';
 import { useNavigate } from 'react-router-dom'
 import { createContext, useContext } from "react";
 
@@ -28,10 +27,33 @@ export  interface Props {
     const navigate = useNavigate();
 
     const [search, setSearch] = useState("");
-    const [posts, setPost] = useState(postData)
+    const [posts, setPost] = useState<Props[]>([])
     const [addTitle, setAddTitle] = useState("")
     const [addPost, setAddPost] = useState("")
     const [open, setOpen] = useState(false)
+
+    const Api = async()=>{
+      try {
+        const data = await fetch("http://localhost:4000/postData")
+        if (!data.ok) {
+          throw new Error("No data Found!");
+          
+        } else {
+          const response = await data.json();
+          setPost(response)
+
+          
+        }
+        
+      } catch (error) {
+        console.log(error);
+        
+      }
+    }
+
+    useEffect(()=>{
+      Api()
+    },[])
 
    const searchPost = posts.filter((post)=> post.title.toLowerCase().indexOf(search.toLowerCase()) !== -1).reverse()
 
@@ -69,7 +91,7 @@ export  interface Props {
         if (addTitle==="" || addPost==="") {
           return;
         } else {
-          return setPost((prev) => {
+          return setPost((prev:any) => {
             setAddTitle("")
             setAddPost("")
             setOpen(false)

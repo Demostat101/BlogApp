@@ -15,14 +15,14 @@ const Home = () => {
 
 
   return (
-    <main className="p-4 md:mt-20 xl:xl:max-w-[1000px] sm:mt-52 w-full shadow-md h-full border-solid border-2 relative">
+    <main className="p-4 md:mt-20 xl:xl:max-w-[1000px] sm:mt-52 w-full shadow-md h-full border-solid border-r-2 border-l-2  ">
       <NewPost>
         <Form/>
       </NewPost>
       {
        searchPost.length 
        ?  searchPost.map((data)=>{
-        return <section key={data.id} onClick={()=> navigate(`/post/${data.id}`)} className=" cursor-pointer">
+        return <section key={data.id} onClick={()=> navigate(`/post/${data.id}`)} className=" cursor-pointer odd:bg-white even:bg-slate-500 even:text-white pl-2 ">
         <h3 className="font-bold">{data.title}</h3>
         <small>
             {

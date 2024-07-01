@@ -22,7 +22,7 @@ const PostPage = () => {
 
   
   return (
-    <article className="w-full max-h-screen flex flex-col xl:max-w-[1000px]">
+    <article className="w-full max-h-screen flex flex-col xl:max-w-[1000px] mt-28 sm:mt-36 border-l-2 border-r-2 border-solid">
       <NewPost>
         <Form/>
       </NewPost>
