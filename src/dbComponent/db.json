@@ -1,31 +1,14 @@
-
-
-{ "postData" : [
+{
+  "postData": [
     {
-        "id":1,
-        "title":"My first assessment",
-        "body":"Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores numquam recusandae animi nam vero distinctio dignissimos itaque commodi quibusdam. Voluptates."
+      "id": "1",
+      "title": "ade",
+      "body": "efjjd\n"
     },
     {
-        "id":2,
-        "title":"My 2nd assessment",
-        "body":"Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores numquam recusandae animi nam vero distinctio dignissimos itaque commodi quibusdam. Voluptates."
-    },
-    {
-        "id":3,
-        "title":"My 3rd assessment",
-        "body":"Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores numquam recusandae animi nam vero distinctio dignissimos itaque commodi quibusdam. Voluptates."
-    },
-    {
-        "id":4,
-        "title":"My 4th assessment",
-        "body":"Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores numquam recusandae animi nam vero distinctio dignissimos itaque commodi quibusdam. Voluptates."
-    },
-    {
-        "id":5,
-        "title":"My 5th assessment",
-        "body":"Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores numquam recusandae animi nam vero distinctio dignissimos itaque commodi quibusdam. Voluptates."
+      "id": "2",
+      "title": "djkdkd",
+      "body": "jjdksks"
     }
-    
-]
+  ]
 }

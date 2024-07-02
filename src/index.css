@@ -15,7 +15,7 @@ a.active {
 
 
 .mt-36{
-    margin-top: 3.5em;
+    margin-top: 0;
     width: 100%;
     display: flex;
     justify-content: center;
@@ -24,3 +24,31 @@ a.active {
 .h-screen {
     height: initial;
 }
+
+
+.loader {
+    width: 65px;
+    aspect-ratio: 1;
+    --g: radial-gradient(farthest-side,#0000 calc(95% - 3px),#4400ff calc(100% - 3px) 98%,#0000 101%) no-repeat;
+    background: var(--g), var(--g), var(--g);
+    background-size: 30px 30px;
+    animation: l10 1.5s infinite;
+    border-color: black;
+  }
+  @keyframes l10 {
+    0% {
+      background-position: 0 0, 0 100%, 100% 100%;
+    }
+    25% {
+      background-position: 100% 0, 0 100%, 100% 100%;
+    }
+    50% {
+      background-position: 100% 0, 0 0, 100% 100%;
+    }
+    75% {
+      background-position: 100% 0, 0 0, 0 100%;
+    }
+    100% {
+      background-position: 100% 100%, 0 0, 0 100%;
+    }
+  }
