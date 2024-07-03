@@ -2,53 +2,75 @@
 @tailwind components;
 @tailwind utilities;
 
-
-*{
-    font-family: "Poppins";
+* {
+  font-family: "Poppins";
 }
 
 a.active {
-
-    border-bottom: 2px solid rgb(206, 190, 190);
-    
+  border-bottom: 2px solid rgb(206, 190, 190);
 }
 
-
-.mt-36{
-    margin-top: 0;
-    width: 100%;
-    display: flex;
-    justify-content: center;
+.mt-36 {
+  margin-top: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
 }
 
 .h-screen {
-    height: initial;
+  height: initial;
 }
 
-
 .loader {
-    width: 65px;
-    aspect-ratio: 1;
-    --g: radial-gradient(farthest-side,#0000 calc(95% - 3px),#4400ff calc(100% - 3px) 98%,#0000 101%) no-repeat;
-    background: var(--g), var(--g), var(--g);
-    background-size: 30px 30px;
-    animation: l10 1.5s infinite;
-    border-color: black;
+  width: 65px;
+  aspect-ratio: 1;
+  --g: radial-gradient(
+      farthest-side,
+      #0000 calc(95% - 3px),
+      #4400ff calc(100% - 3px) 98%,
+      #0000 101%
+    )
+    no-repeat;
+  background: var(--g), var(--g), var(--g);
+  background-size: 30px 30px;
+  animation: l10 1.5s infinite;
+  border-color: black;
+}
+@keyframes l10 {
+  0% {
+    background-position: 0 0, 0 100%, 100% 100%;
   }
-  @keyframes l10 {
-    0% {
-      background-position: 0 0, 0 100%, 100% 100%;
-    }
-    25% {
-      background-position: 100% 0, 0 100%, 100% 100%;
-    }
-    50% {
-      background-position: 100% 0, 0 0, 100% 100%;
-    }
-    75% {
-      background-position: 100% 0, 0 0, 0 100%;
-    }
-    100% {
-      background-position: 100% 100%, 0 0, 0 100%;
-    }
+  25% {
+    background-position: 100% 0, 0 100%, 100% 100%;
   }
+  50% {
+    background-position: 100% 0, 0 0, 100% 100%;
+  }
+  75% {
+    background-position: 100% 0, 0 0, 0 100%;
+  }
+  100% {
+    background-position: 100% 100%, 0 0, 0 100%;
+  }
+}
+
+.fullName {
+  color: #737373;
+  background: url("../src/assets/img.avif");
+  background-size: cover;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  animation: fade-inout 3s infinite alternate;
+}
+
+@keyframes fade-inout{
+  0%{opacity: 1;}
+  50%{opacity: 1;}
+  85%{opacity: 0.5;}
+  100%{opacity: 0;}
+}
+
+body{
+  background-color: #E6E6E6;
+}

@@ -16,7 +16,7 @@ const Home = () => {
   const navigate = useNavigate();
 
   return (
-    <main className="p-4 md:mt-36 xl:xl:max-w-[1000px] sm:mt-52 w-full shadow-md h-full border-solid border-r-2 border-l-2  ">
+    <main className="p-4 md:mt-36 xl:xl:max-w-[1000px] sm:mt-52 w-full shadow-md h-full border-solid border-r-2 border-l-2 sm:pb-20 ">
       <NewPost>
         <Form />
       </NewPost>
