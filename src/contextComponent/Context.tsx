@@ -116,15 +116,18 @@ export  interface Props {
           const response = await axios.put(`http://localhost:4000/postData/${id}`, edit)
           console.log(id);
           
-          setPost(posts.map((post)=> post.id === id ? {...response.data} : post));
           setEditPost("");
           setEditTitle("");
           navigate("/")
+          setPost(posts.map((post)=> post.id === id ? {...response.data} : post));
         } catch (error:any) {
           console.log(`Error: ${error.message}`);
         }
 
       }
+
+      console.log(editTitle);
+      
 
 
    return (

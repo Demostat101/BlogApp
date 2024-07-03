@@ -9,9 +9,9 @@ const Form = () => {
 
         <FaTimes className="absolute top-2 right-2 text-red-500 cursor-pointer" size={30} onClick={ closePost}/>
 
-        <input className="w-full outline-none" type="text" value={addTitle} onChange={(e)=> setAddTitle(e.target.value)} placeholder="Add Title" />
+        <input className="w-full outline-none pl-2" type="text" value={addTitle} onChange={(e)=> setAddTitle(e.target.value)} placeholder="Add Title" />
 
-        <textarea name="" id="" value={addPost} onChange={(e)=> setAddPost(e.target.value)} placeholder="add your blog message" className="w-full outline-none h-56"></textarea>
+        <textarea name="" id="" value={addPost} onChange={(e)=> setAddPost(e.target.value)} placeholder="add your blog message" className="w-full outline-none h-56 pl-2"></textarea>
 
         <button onClick={submitBlog} className="bg-blue-400 text-white font-bold h-8 text-2xl rounded">Submit</button>
      
