@@ -8,6 +8,7 @@ import Home from './component/Home'
 import PostPage from './component/PostPage'
 import About from './component/About'
 import Error404 from './component/Error404'
+import EditPost from './component/EditPost'
 
 
 
@@ -27,6 +28,7 @@ function App() {
     <Routes>
       <Route path='/' element={<Home/>}/>
       <Route path='/post/:id' element={<PostPage/>}/>
+      <Route path='/edit/:id' element={<EditPost/>}/>
       <Route path='/about' element={<About/>}/>
       <Route path='*' element={<Error404/>}/>
     </Routes>

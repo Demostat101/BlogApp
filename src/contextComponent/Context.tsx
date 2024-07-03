@@ -25,6 +25,7 @@ export  interface Props {
  }
 
  
+ 
  export const Context = ({children}:any) => {
     const navigate = useNavigate();
 
@@ -32,6 +33,8 @@ export  interface Props {
     const [posts, setPost] = useState<Props[]>([])
     const [addTitle, setAddTitle] = useState("")
     const [addPost, setAddPost] = useState("")
+    const [editTitle, setEditTitle] = useState("")
+    const [editPost, setEditPost] = useState("")
     const [open, setOpen] = useState(false)
 
     const {data, fetchError, isLoading} = useAxiosFetch("http://localhost:4000/postData");
@@ -40,12 +43,13 @@ export  interface Props {
       setPost(data);
     },[data])
 
-
+    console.log(posts);
    const searchPost = posts.filter((post)=> post.title.toLowerCase().indexOf(search.toLowerCase()) !== -1).reverse()
 
    useEffect (()=>{
         searchPost
    },[posts,search])
+
    
     const handleDelete = async(id:string) => {
           await axios.delete(`http://localhost:4000/postData/${id}`)
@@ -92,18 +96,39 @@ export  interface Props {
             })
           }
         } catch (error:any) {
+          alert(`${error.message}`)
           console.log(`Error: ${error.message}`);
           
         }
-
-       
-
         
+      }
+    
+
+      const handleEdit = async (id:string)=>{
+
+        const edit = {
+          id:(posts.length + 1).toString(),
+          title:editTitle,
+          body:editPost
+        }
+
+        try {
+          const response = await axios.put(`http://localhost:4000/postData/${id}`, edit)
+          console.log(id);
+          
+          setPost(posts.map((post)=> post.id === id ? {...response.data} : post));
+          setEditPost("");
+          setEditTitle("");
+          navigate("/")
+        } catch (error:any) {
+          console.log(`Error: ${error.message}`);
+        }
+
       }
 
 
    return (
-     <blogContext.Provider value={{search,setSearch,posts,setPost,addTitle,setAddTitle,addPost, setAddPost,open,setOpen,searchPost, handleDelete, openPost,closePost, submitBlog,fetchError,isLoading}}>
+     <blogContext.Provider value={{search,setSearch,posts,setPost,addTitle,setAddTitle,addPost, setAddPost,open,setOpen,searchPost, handleDelete, openPost,closePost, submitBlog,fetchError,isLoading, navigate,handleEdit, editPost, editTitle, setEditPost, setEditTitle}}>
         {children}
      </blogContext.Provider>
    )
