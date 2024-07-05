@@ -43,7 +43,7 @@ export const Context = ({ children }: any) => {
 
   const searchPost = posts
     .filter(
-      (post) => post.title.toLowerCase().indexOf(search.toLowerCase()) !== -1
+      (post) => (post.title.toLowerCase().indexOf(search.toLowerCase()) !== -1 || post.body.toLowerCase().indexOf(search.toLowerCase()) !== -1)
     )
     .reverse();
 
