@@ -23,7 +23,7 @@ const EditPost = () => {
     setEditPost,
   }: PostTypes = blogContextProvider();
 
-  const post: any = posts.find((post) => post.id.toString() === id);
+  const post: any = posts.find((post) => post._id.toString() === id);
 
   useEffect(() => {
     if (post) {
@@ -61,7 +61,7 @@ const EditPost = () => {
             <br />
             <button
               className="bg-blue-400 text-white font-bold h-8 text-2xl rounded"
-              onClick={() => handleEdit(post.id)}
+              onClick={() => handleEdit(post._id)}
             >
               Submit
             </button>

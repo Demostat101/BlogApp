@@ -5,13 +5,15 @@ import useAxiosFetch from "../useAxiosFetch/UseAxiosFetch";
 import axios from "axios";
 
 export interface Props {
-  id: string;
+  _id: string;
   title: string;
   body: string;
   addTitle: string;
   setAddTitle: React.Dispatch<React.SetStateAction<string>>;
   open: boolean;
   setOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  created:[]
+
 }
 
 const blogContext = createContext<null | any>({});
@@ -32,12 +34,12 @@ export const Context = ({ children }: any) => {
   const [open, setOpen] = useState(false);
 
   const { data, fetchError, isLoading } = useAxiosFetch(
-    "http://localhost:4000/postData"
+    "http://localhost:4000/users"
   );
 
   useEffect(() => {
     setPost(data);
-  }, [data]);
+  }, [data]); 
 
   const searchPost = posts
     .filter(
@@ -49,10 +51,10 @@ export const Context = ({ children }: any) => {
     searchPost;
   }, [posts, search]);
 
-  const handleDelete = async (id: string) => {
-    await axios.delete(`http://localhost:4000/postData/${id}`);
+  const handleDelete = async (_id: string) => {
+    await axios.delete(`http://localhost:4000/users/${_id}`);
     try {
-      let poster = posts.filter((post) => post.id !== id);
+      let poster = posts.filter((post) => post._id !== _id);
       setPost(poster);
       navigate("/");
     } catch (error: any) {
@@ -70,7 +72,7 @@ export const Context = ({ children }: any) => {
 
   const submitBlog = async () => {
     const add = {
-      id: (posts.length + 1).toString(),
+      _id: (posts.length + 1).toString(),
       title: addTitle,
       body: addPost,
     };
@@ -81,7 +83,7 @@ export const Context = ({ children }: any) => {
     }
 
     try {
-      const response = await axios.post("http://localhost:4000/postData", add);
+      const response = await axios.post("http://localhost:4000/users", add);
 
       return setPost((prev: any) => {
         setAddTitle("");
@@ -95,9 +97,9 @@ export const Context = ({ children }: any) => {
     }
   };
 
-  const handleEdit = async (id: string) => {
+  const handleEdit = async (_id: string) => {
     const edit = {
-      id: (posts.length + 1).toString(),
+      _id: (posts.length + 1).toString(),
       title: editTitle,
       body: editPost,
     };
@@ -107,7 +109,7 @@ export const Context = ({ children }: any) => {
     } else {
       try {
         const response = await axios.put(
-          `http://localhost:4000/postData/${id}`,
+          `http://localhost:4000/users/${_id}`,
           edit
         );
 
@@ -115,7 +117,7 @@ export const Context = ({ children }: any) => {
         setEditTitle("");
         navigate("/");
         setPost(
-          posts.map((post) => (post.id === id ? { ...response.data } : post))
+          posts.map((post) => (post._id === _id ? { ...response.data } : post))
         );
       } catch (error: any) {
         console.log(`Error: ${error.message}`);

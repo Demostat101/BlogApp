@@ -2,16 +2,17 @@ import { useNavigate } from "react-router-dom";
 import NewPost from "./NewPost";
 import Form from "./Form";
 import { Props, blogContextProvider } from "../contextComponent/Context";
-import { format } from "date-fns";
+
 
 interface Propss {
   searchPost: Props[];
   fetchError: boolean;
   isLoading: boolean;
+  create:[]
 }
 
 const Home = () => {
-  const { searchPost, fetchError, isLoading }: Propss = blogContextProvider();
+  const { searchPost, fetchError, isLoading }: Propss = blogContextProvider();  
 
   const navigate = useNavigate();
 
@@ -36,12 +37,12 @@ const Home = () => {
         searchPost.map((data) => {
           return (
             <section
-              key={data.id}
-              onClick={() => navigate(`/post/${data.id}`)}
+              key={data._id}
+              onClick={() => navigate(`/post/${data._id}`)}
               className=" cursor-pointer odd:bg-white even:bg-slate-500 even:text-white pl-2 "
             >
               <h3 className="font-bold">{data.title}</h3>
-              <small>{format(new Date(), "MMMM dd, yyyy pp")}</small>
+              <small>{data.created.slice(0,10)} <span>{data.created.slice(11,20)}</span></small>
               <div className="mt-3">
                 {data.body.length > 25 ? (
                   <div>{data.body.slice(0, 26)}...</div>
