@@ -34,7 +34,7 @@ export const Context = ({ children }: any) => {
   const [open, setOpen] = useState(false);
 
   const { data, fetchError, isLoading } = useAxiosFetch(
-    "http://localhost:4000/users"
+    "https://blogappbackend-vhkj.onrender.com/users"
   );
 
   useEffect(() => {
@@ -52,7 +52,7 @@ export const Context = ({ children }: any) => {
   }, [posts, search]);
 
   const handleDelete = async (_id: string) => {
-    await axios.delete(`http://localhost:4000/users/${_id}`);
+    await axios.delete(`https://blogappbackend-vhkj.onrender.com/users/${_id}`);
     try {
       let poster = posts.filter((post) => post._id !== _id);
       setPost(poster);
@@ -83,7 +83,7 @@ export const Context = ({ children }: any) => {
     }
 
     try {
-      const response = await axios.post("http://localhost:4000/users", add);
+      const response = await axios.post("https://blogappbackend-vhkj.onrender.com/users", add);
 
       return setPost((prev: any) => {
         setAddTitle("");
@@ -109,7 +109,7 @@ export const Context = ({ children }: any) => {
     } else {
       try {
         const response = await axios.put(
-          `http://localhost:4000/users/${_id}`,
+          `https://blogappbackend-vhkj.onrender.com/users/${_id}`,
           edit
         );
 
